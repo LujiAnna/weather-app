@@ -24,7 +24,7 @@
 
 ### MIA
 
-- Enter location/city -> weather page
+- Enter location/city -> weather page : done
 - Enter city -> + Add city (option to enter another city)
 - City name > (Dropdown to choose another city in same country)
 
