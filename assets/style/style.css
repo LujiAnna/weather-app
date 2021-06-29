@@ -1,3 +1,8 @@
 body {
   font-family: 'Raleway', sans-serif;
+  opacity: 0.9;
+}
+
+.card-title {
+  font-weight: 500!important;
 }

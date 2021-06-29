@@ -19,7 +19,7 @@
 - User would like to open and immediately see the weather today
 - First: Ask for user location in a pop up box: yes/no
 - If declines please enter city/zip
-- Display name of city and temparature, rain, wind, humidity, etc
+- Display name of city and temperature, rain, wind, humidity, etc
 - Second: Keep this data so won't have to be entered again in a displayed city image and temp, with option to enter another location or extract location from phone
 
 ### MIA
