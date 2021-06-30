@@ -4,20 +4,24 @@ body {
   font-size: 100%;
 }
 
-h1{
-  font-weight: 700!important;
+html, body, .app {
+  height: 100%;
 }
 
-.card {
-  /* center middle */
-  /* padding: 1%; */
+nav {
+  opacity: 0.8;
+}
+
+h1{
+  font-weight: 500!important;
 }
 
 h4 {
   font-weight: 700;
-/* font-size: 300%!important; */
+font-size: 600%!important;
 }
 
 p {
   line-height: 1.85;
 }
+

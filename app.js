@@ -1,8 +1,16 @@
+// import {apiKey} from 'config.js';
+// import(apiKey);
+// alert(apiKey);
+
+// add that script inside file you want to use it
+	// <script type="module" src="config.js"></script>
+
 const btn = document.querySelector('button');
 const placeCity = document.querySelector('.helper-text');
 const temp = document.querySelector('h4');
 const high = document.querySelector('.high');
 const low = document.querySelector('.low');
+const description = document.querySelector('.description');
 const rain = document.querySelector('.rain');
 
 const cityElement = document.querySelector('#city');
@@ -81,7 +89,7 @@ low.innerHTML = `Low ${myJson.main.temp_min} &deg;`;
 //   rain.innerHTML = `Chances of rain in ${key} is ${value*100}&#37;`;
 // }
 
-   rain.innerHTML = `Today is ${myJson.weather[0].description} `;
+description.innerHTML = `There's ${myJson.weather[0].description}`;
 
 // average temp 
 

@@ -23,19 +23,19 @@
 
   </head>
   <body>
-  <div class="row">
+  <div class="row app valign-wrapper">
     <!-- offset centers card horizontally -->
-    <div class="col s12 m6 offset-m3">
-      <nav>
-        <div class="nav-wrapper teal">
-          <a href="#" class="brand-logo">Aqurate Weather</a>
-          <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><a href="#">Compare Cities</a></li>
-          </ul>
-        </div>
-      </nav>
+    <div class="col s12 m6 offset-m3 ">
       <div class="card">
-        <div class="card-content ">
+        <nav>
+          <div class="nav-wrapper teal">
+            <a href="#" class="brand-logo">AQ Weather</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+              <li><a href="#">Compare Cities</a></li>
+            </ul>
+          </div>
+        </nav>
+        <div class="card-content">
           <h1 class="time center-align flow-text"></h1>
           <!-- input box: Please enter your city -->
           <div class="row">
@@ -44,11 +44,20 @@
                 <div class="input-field col s6">
                   <input id="city" placeholder="Enter City"  type="text">
                   <span class="helper-text" data-error="wrong" data-success="right" id='place-city'></span>
+                  <!-- <span class="helper-text" data-error="wrong" data-success="right" id='forecast'></span> -->
+                  <div class="row">
+                    <div class="col s1">1</div>
+                    <div class="col s1">2</div>
+                    <div class="col s1">3</div>
+                    <div class="col s1">4</div>
+                    <div class="col s1">5</div>
+                    </div>
                 </div>
                 <div class="output-field col s6">
                   <h4 id='temp' class="center-align teal-text darken-4 flow-text"></h4>
                   <p class='high'></p>
                   <p class='low'></p>
+                  <p class='description'></p>
                   <p class='rain'></p>
 
                 </div>
