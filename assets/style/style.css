@@ -1,8 +1,19 @@
 body {
   font-family: 'Raleway', sans-serif;
   opacity: 0.9;
+  font-size: 100%;
 }
 
 .card-title {
   font-weight: 500!important;
+}
+
+.card {
+  /* center middle */
+  /* padding: 1%; */
+}
+
+h4 {
+  font-weight: 700;
+/* font-size: 300%!important; */
 }
