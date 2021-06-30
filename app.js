@@ -38,7 +38,6 @@ time.innerHTML = `${getHourz}:${getMinutez}`;
 
 let api = 'http://api.openweathermap.org/data/2.5';
 let units = 'units=metric';
-let apiKey = 'b95e3e61a17d2eadd3e525d8145db6e5'
 
 btn.addEventListener('click', () => {
   // grab user input
