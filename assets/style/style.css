@@ -4,8 +4,8 @@ body {
   font-size: 100%;
 }
 
-.card-title {
-  font-weight: 500!important;
+h1{
+  font-weight: 700!important;
 }
 
 .card {
@@ -16,4 +16,8 @@ body {
 h4 {
   font-weight: 700;
 /* font-size: 300%!important; */
+}
+
+p {
+  line-height: 1.85;
 }

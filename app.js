@@ -1,8 +1,32 @@
 const btn = document.querySelector('button');
 const placeCity = document.querySelector('.helper-text');
 const temp = document.querySelector('h4');
+const high = document.querySelector('.high');
+const low = document.querySelector('.low');
+const rain = document.querySelector('.rain');
 
 const cityElement = document.querySelector('#city');
+const time = document.querySelector('.time');
+
+
+// set time
+let timeObject = new Date();
+let getHourz = timeObject.getHours();
+let getMinutez = timeObject.getMinutes();
+
+// 2 digits minute and hours
+// if(getMinutez < 10) {
+//   // getMinutez = '0' + 'getMinutez';
+//   getMinutez = `0${getMinutez}`
+//   console.log(getMinutez);
+// }
+
+(getHourz < 10) ? `0${getHourz}`: getHourz;
+(getMinutez < 10) ? `0${getMinutez}`: getMinutez;
+
+
+time.innerHTML = `${getHourz}:${getMinutez}`;
+
 
 let api = 'http://api.openweathermap.org/data/2.5';
 let units = 'units=metric';
@@ -46,9 +70,18 @@ placeCity.innerHTML = `${myJson.name}, ${myJson.sys.country}`;
 
 // display temperature on box
 // console.log(myJson.list[0].main.temp);
-// temp.innerHTML = `${myJson.main.temp} &deg; C`;
-temp.innerHTML = `${myJson.main.temp} &#8451;`;
+temp.innerHTML = `${myJson.main.temp} &deg;`;
+// temp.innerHTML = `${myJson.main.temp} &#8451;`;
+high.innerHTML = `High ${myJson.main.temp_max} &deg;`;
+low.innerHTML = `Low ${myJson.main.temp_min} &deg;`;
 
+// rain.innerHTML = `Chances of rain in ${myJson.rain} `;
+// for (const [key, value] of Object.entries(myJson.rain)) {
+//   console.log(`${key}: ${value}`);
+//   rain.innerHTML = `Chances of rain in ${key} is ${value*100}&#37;`;
+// }
+
+   rain.innerHTML = `Today is ${myJson.weather[0].description} `;
 
 // average temp 
 
