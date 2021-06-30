@@ -28,4 +28,4 @@ Consolidate your knowledge on:
 ### Instructions
 
 - [x] Create an account on OpenWeather, and generate a key
-- [ ] Get the weather data using the native JS fetch() method (if you like, you can also check out axios)
+- [x] Get the weather data using the native JS fetch() method (if you like, you can also check out axios)

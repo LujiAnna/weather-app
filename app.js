@@ -70,7 +70,7 @@ placeCity.innerHTML = `${myJson.name}, ${myJson.sys.country}`;
 
 // display temperature on box
 // console.log(myJson.list[0].main.temp);
-temp.innerHTML = `${myJson.main.temp} &deg;`;
+temp.innerHTML = `${Math.round(myJson.main.temp)} &deg;`;
 // temp.innerHTML = `${myJson.main.temp} &#8451;`;
 high.innerHTML = `High ${myJson.main.temp_max} &deg;`;
 low.innerHTML = `Low ${myJson.main.temp_min} &deg;`;
