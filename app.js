@@ -1,5 +1,9 @@
-// import {apiKey} from 'config.js';
-// import(apiKey);
+// import {apiKey} from './config'; // Uncaught SyntaxError: Cannot use import statement outside a module
+
+// import './config'; // Uncaught SyntaxError: Cannot use import statement outside a module
+
+// require ('config'); // app.js:4 Uncaught ReferenceError: require is not defined
+
 // alert(apiKey);
 
 // add that script inside file you want to use it
@@ -15,12 +19,14 @@ const rain = document.querySelector('.rain');
 
 const cityElement = document.querySelector('#city');
 const time = document.querySelector('.time');
+const greetings = document.querySelector('#greetings');
 
 
 // set time
 let timeObject = new Date();
 let getHourz = timeObject.getHours();
 let getMinutez = timeObject.getMinutes();
+let greet = '';
 
 // 2 digits minute and hours
 // if(getMinutez < 10) {
@@ -28,10 +34,16 @@ let getMinutez = timeObject.getMinutes();
 //   getMinutez = `0${getMinutez}`
 //   console.log(getMinutez);
 // }
+// console.log(typeof(getMinutez));
 
-(getHourz < 10) ? `0${getHourz}`: getHourz;
-(getMinutez < 10) ? `0${getMinutez}`: getMinutez;
+getHourz < 10 ? getHourz = '0' + getHourz: getHourz;
+getMinutez < 10 ? getMinutez = '0' + getMinutez : getMinutez;
+getHourz < 12 ? greet = 'Good morning': 
+getHourz < 18 ? greet = 'Good afternoon': greet = 'Good evening';                           ;
 
+// console.log(getMinutez);
+// console.log(typeof(getMinutez));
+greetings.innerHTML = greet;
 
 time.innerHTML = `${getHourz}:${getMinutez}`;
 
@@ -39,6 +51,8 @@ time.innerHTML = `${getHourz}:${getMinutez}`;
 let api = 'https://api.openweathermap.org/data/2.5';
 let units = 'units=metric';
 let apiKey = 'b95e3e61a17d2eadd3e525d8145db6e5'
+
+
 
 btn.addEventListener('click', () => {
   // grab user input
@@ -104,6 +118,10 @@ description.innerHTML = `There's ${myJson.weather[0].description}`;
   // }
 
   // console.log(myDate);
+  cityElement.value = '';
+
+  // TODO: 5 Days Weather Forecast
+ // use: api.openweathermap.org/data/2.5/forecast?q={city name}&appid={API key}
 
   })
 })
