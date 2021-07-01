@@ -25,3 +25,13 @@ p {
   line-height: 1.85;
 }
 
+.forecast {
+  padding: 20px;
+  background-color: goldenrod!important;
+  font-size: 150%!important;
+}
+
+.forecast .col {
+  margin-right: 10px;
+  padding-right: 10px;
+}

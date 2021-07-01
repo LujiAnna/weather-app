@@ -1,14 +1,4 @@
-// import {apiKey} from './config'; // Uncaught SyntaxError: Cannot use import statement outside a module
-
-// import './config'; // Uncaught SyntaxError: Cannot use import statement outside a module
-
-// require ('config'); // app.js:4 Uncaught ReferenceError: require is not defined
-
-// alert(apiKey);
-
-// add that script inside file you want to use it
-	// <script type="module" src="config.js"></script>
-
+// WEATHER
 const btn = document.querySelector('button');
 const placeCity = document.querySelector('.helper-text');
 const temp = document.querySelector('h4');
@@ -21,20 +11,11 @@ const cityElement = document.querySelector('#city');
 const time = document.querySelector('.time');
 const greetings = document.querySelector('#greetings');
 
-
-// set time
+// TIME
 let timeObject = new Date();
 let getHourz = timeObject.getHours();
 let getMinutez = timeObject.getMinutes();
 let greet = '';
-
-// 2 digits minute and hours
-// if(getMinutez < 10) {
-//   // getMinutez = '0' + 'getMinutez';
-//   getMinutez = `0${getMinutez}`
-//   console.log(getMinutez);
-// }
-// console.log(typeof(getMinutez));
 
 getHourz < 10 ? getHourz = '0' + getHourz: getHourz;
 getMinutez < 10 ? getMinutez = '0' + getMinutez : getMinutez;
@@ -47,38 +28,33 @@ greetings.innerHTML = greet;
 
 time.innerHTML = `${getHourz}:${getMinutez}`;
 
+// FORECAST
 
+
+// API
 let api = 'https://api.openweathermap.org/data/2.5';
 let units = 'units=metric';
-let apiKey = 'b95e3e61a17d2eadd3e525d8145db6e5'
 
-
-
+// INTERACTION
 btn.addEventListener('click', () => {
   // grab user input
   let city = cityElement.value;
   // console.log(city); 
 
-  // small letter city
-
-  // let url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=[YOUR API KEY HERE]`;
   // let myRequest = new Request(url);
   // const fetchResponsePromise = fetch(resource [, init])
-  let url =`${api}/weather?q=${city}&${units}&appid=${apiKey}`
+  let url_weather =`${api}/weather?q=${city}&${units}&appid=${apiKey}`
+  let url_forecast = `${api}/forecast?q=${city}&appid=${apiKey}`
 
-  
   // fetch temperature from url
-  // fetch('http://api.openweathermap.org/data/2.5/forecast?id=524901&appid=b95e3e61a17d2eadd3e525d8145db6e5')
-  fetch(url)
+  fetch(url_weather)
   .then(function response(response){
-  // grab 
   // console.log('hey');
   // console.log(response);
     return response.json(); 
   })
 .then(function(myJson) {
   console.log(myJson);
-  // console.log(JSON.stringify(myJson));
   //  console.log(typeof(myJson), typeof(JSON.stringify(myJson))) ; // object, string
 
 // display city below input line/box
@@ -86,16 +62,15 @@ btn.addEventListener('click', () => {
 // console.log(myJson.city.name); 
 // placeCity.innerHTML = myJson.city.name + ', ' + myJson.city.country;
 
-console.log(myJson.name);
+// console.log(myJson.name);
 placeCity.innerHTML = `${myJson.name}, ${myJson.sys.country}`;
-
 
 // display temperature on box
 // console.log(myJson.list[0].main.temp);
 temp.innerHTML = `${Math.round(myJson.main.temp)} &deg;`;
 // temp.innerHTML = `${myJson.main.temp} &#8451;`;
-high.innerHTML = `High ${myJson.main.temp_max} &deg;`;
-low.innerHTML = `Low ${myJson.main.temp_min} &deg;`;
+high.innerHTML = `Today's high ${myJson.main.temp_max} &deg;`;
+low.innerHTML = `Today's low ${myJson.main.temp_min} &deg;`;
 
 // rain.innerHTML = `Chances of rain in ${myJson.rain} `;
 // for (const [key, value] of Object.entries(myJson.rain)) {
@@ -105,24 +80,27 @@ low.innerHTML = `Low ${myJson.main.temp_min} &deg;`;
 
 description.innerHTML = `There's ${myJson.weather[0].description}`;
 
-// average temp 
-
-// let pElem = document.createElement('p');
-// pElem.textContent = 'This is a newly-added paragraph.';
-// document.body.appendChild(pElem);
-
-  // let myDate;
-  // for(let i = 0; i < 10000000; i++) {
-  //   let date = new Date();
-  //   myDate = date;
-  // }
-
-  // console.log(myDate);
+// remove typed city from input
   cityElement.value = '';
 
   // TODO: 5 Days Weather Forecast
  // use: api.openweathermap.org/data/2.5/forecast?q={city name}&appid={API key}
+//  TODO: Prepare display area
 
+// Fetch another API
+return fetch(url_forecast);
+
+  }).then(function (response) {
+    if (response.ok) {
+      return response.json();
+    } else {
+      return Promise.reject(response);
+    }
+  }).then(function (data) {
+    console.log(data);
+
+
+  }).catch(function (error) {
+    console.warn(error);
   })
-})
-  ;
+}); // close addEventListener
