@@ -28,7 +28,11 @@ greetings.innerHTML = greet;
 
 time.innerHTML = `${getHourz}:${getMinutez}`;
 
-// FORECAST
+// FORECAST 
+const day = document.querySelectorAll('.day');
+console.log(day);
+console.log('day ,', typeof(day)); //object but looks like array // array-like object
+
 
 
 // API
@@ -45,7 +49,7 @@ btn.addEventListener('click', () => {
   // let myRequest = new Request(url);
   // const fetchResponsePromise = fetch(resource [, init])
   let url_weather =`${api}/weather?q=${city}&${units}&appid=${apiKey}`
-  let url_forecast = `${api}/forecast?q=${city}&appid=${apiKey}`
+  let url_forecast = `${api}/forecast?q=${city}&${units}&appid=${apiKey}`
 
   // fetch temperature from url
   fetch(url_weather)
@@ -55,7 +59,7 @@ btn.addEventListener('click', () => {
     return response.json(); 
   })
 .then(function(myJson) {
-  console.log(myJson);
+  // console.log(myJson);
   //  console.log(typeof(myJson), typeof(JSON.stringify(myJson))) ; // object, string
 
 // display city below input line/box
@@ -68,10 +72,10 @@ placeCity.innerHTML = `${myJson.name}, ${myJson.sys.country}`;
 
 // display temperature on box
 // console.log(myJson.list[0].main.temp);
-temp.innerHTML = `${Math.round(myJson.main.temp)} &deg;`;
+temp.innerHTML = `${Math.round(myJson.main.temp)}&deg;`;
 // temp.innerHTML = `${myJson.main.temp} &#8451;`;
-high.innerHTML = `Today's high ${myJson.main.temp_max} &deg;`;
-low.innerHTML = `Today's low ${myJson.main.temp_min} &deg;`;
+high.innerHTML = `Today's high ${myJson.main.temp_max}&deg;`;
+low.innerHTML = `Today's low ${myJson.main.temp_min}&deg;`;
 
 // rain.innerHTML = `Chances of rain in ${myJson.rain} `;
 // for (const [key, value] of Object.entries(myJson.rain)) {
@@ -98,7 +102,29 @@ return fetch(url_forecast);
       return Promise.reject(response);
     }
   }).then(function (data) {
-    console.log(data);
+    // console.log(data);
+    // console.log(data.list);
+    // Loop through array of objects for 5 days- index 0 to 4
+let forecast = [];
+    for (let i = 0; i < 5; i++) {
+  // console.log(data.list[i]);
+  // console.log(data.list[i].main);
+  // console.log(data.list[i].main.temp);
+  forecast.push(data.list[i].main.temp);
+  // console.log(forecast);
+}
+
+console.log(forecast);
+
+day.forEach(function(singleDay,i) {
+  // console.log(i);
+  // console.log(singleDay);
+  // console.log(forecast)
+// grab indexwise from data.list[i].main.temp
+// write in dome
+  // day.innerHTML = `${forecast}&deg;`;
+  singleDay.innerHTML = `${forecast[i]}&deg;`;
+});
 
 
   }).catch(function (error) {
