@@ -34,6 +34,7 @@ time.innerHTML = `${getHourz}:${getMinutez}`;
 // API
 let api = 'https://api.openweathermap.org/data/2.5';
 let units = 'units=metric';
+let apiKey = 'b95e3e61a17d2eadd3e525d8145db6e5';
 
 // INTERACTION
 btn.addEventListener('click', () => {
