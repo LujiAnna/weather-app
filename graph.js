@@ -24,4 +24,17 @@
   //   $('.collapsible').collapsible();
   // });
 
+  // keyboard event - draft work
+  // document.addEventListener('keyup', (event) => {
+  //   const keyName = event.key;
+  //   // console.log(event);
+  //   // console.log(event.key);
+  //   // key - 'Enter', code - 'Enter', keyCode - 13
+  //   if (keyName === 'Enter') {
+  //     // do sth
+  //     // return;
+  //     console.log('Hey key');
+  //     console.log(event.key);
+  //   }
+  // }, false);
   

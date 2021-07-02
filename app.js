@@ -73,11 +73,29 @@ let api = 'https://api.openweathermap.org/data/2.5';
 let units = 'units=metric';
 let apiKey = 'b95e3e61a17d2eadd3e525d8145db6e5';
 
-// INTERACTION
-btn.addEventListener('click', () => {
+var city = '';
+
+var getCity = () => {
+  // city = cityElement.value;
+  // console.log(city);
+  return city=cityElement.value;
+  //  ore dont use `return` but also remove `{}`
+  // read more: https://stackoverflow.com/questions/45754957/why-doesnt-my-arrow-function-return-a-value
+}
+// getCity(); // worked on console
+// console.log(getCity());
+
+let callApi  = () => {
   // grab user input
-  let city = cityElement.value;
+  // let city = cityElement.value;
+  //  city = cityElement.value;
+// debugger;
+// console.log(getCity()); 
+
+  city = getCity();
+
   // console.log(city); 
+
 
   // let myRequest = new Request(url);
   // const fetchResponsePromise = fetch(resource [, init])
@@ -174,7 +192,41 @@ days.forEach(function(singleDay,i) {
   }).catch(function (error) {
     console.warn(error);
   })
-}); // close addEventListener
+}; // close addEventListener
+
+
+// Keyboard INTERACTION
+let x = document.addEventListener('keyup', (event) => {
+  const keyName = event.key;
+  // console.log(event);
+  // console.log(event.key);
+  // key - 'Enter', code - 'Enter', keyCode - 13
+  if (keyName === 'Enter') {
+    // do sth
+    // return; // do nothing, if so is your wish
+    // console.log('Hey key');
+    // console.log(event.key);
+    // console.log(event);
+    // TODO: Access input value 
+    // city = cityElement.value;
+    // console.log(city);
+    city = getCity();
+    // console.log(city);
+
+    // now call your api
+    callApi();
+
+    // Get this key out to fetch
+    // this function must be called in order to access the `city` variable
+  }
+}, false);
+
+// console.log(city);
+
+
+// Button INTERACTION
+btn.addEventListener('click', callApi);
+
 
 
 // ACCORDION
