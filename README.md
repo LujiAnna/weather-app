@@ -1,4 +1,4 @@
-# The Weather Application
+# The Weather Application - WIP
 
 ## Objective
 
@@ -13,7 +13,7 @@ Consolidate your knowledge on:
 ### Must-have features
 
 - [x] In the home page the user can enter the city of his/her choice (think of the right HTML elements here)
-- [ ] On clicking the SUBMIT button or pressing ENTER the application will display the weather for the next 5 days - start here
+- [ ] On clicking the SUBMIT button or pressing ENTER the application will display the weather for the next 5 days - BUG! 5 Day weather forecast has 8 intervals daily, which are removed if interval is passed. from 00midnight next day's forecast starts. Take care of this!
 - [x] The application must be responsive and mobile friendly - update
       💡
 
