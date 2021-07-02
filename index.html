@@ -14,6 +14,8 @@
     <!-- icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- style -->
+    <!-- Add jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <!-- Compiled and minified JavaScript -->
@@ -27,16 +29,28 @@
     <!-- offset centers card horizontally -->
     <div class="col s12 m6 offset-m3 ">
       <div class="card">
-        <header>
+        <!-- <header> -->
+
+        <!-- Dropdown Structure -->
+      <ul id="dropdown1" class="dropdown-content teal-text">
+        <li><a href="#!">Hourly</a></li>
+        <li><a href="#!">Weekend</a></li>
+        <li class="divider"></li>
+        <li><a href="#!">Across the Country</a></li>
+      </ul>  
         <nav>
           <div class="nav-wrapper teal">
-            <a href="#" class="brand-logo">aq weather</a>
+            <a href="#!" class="brand-logo">aq weather</a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
+              <li><a href="#"><i class="material-icons">refresh</i></a></li>
               <li><a href="#">Compare Cities</a></li>
+              <!-- Dropdown Trigger -->
+              <li><a data-target='dropdown1' class="dropdown-trigger" href="#!" data-trigger="dropdown1">More Forecasts<i class="material-icons right">arrow_drop_down</i></a></li>
             </ul>
           </div>
         </nav>
-      </header>
+      <!-- </header> -->
+
         <main class="card-content">
           <h1 class="time center-align flow-text"></h1>
           <p class="helper-text center-align teal-text" id='greetings'></p>
@@ -49,11 +63,36 @@
                   <span class="helper-text" data-error="wrong" data-success="right" id='place-city'></span>
                   <span class="helper-text" data-error="wrong" data-success="right" id='forecast'></span>
                   <div class="row forecast">
+                   
+
+                    <div class="col s1">
+                          <span class="card-title name-day">Fri</span>
+                          <p class="day"></p>
+                        </div>
+
+                        <div class="col s1">
+                          <span class="card-title name-day">Sat</span>
+                          <p class="day"></p>
+                        </div>
+                        <div class="col s1">
+                          <span class="card-title name-day">Sun</span>
+                          <p class="day"></p>
+                        </div>
+                        <div class="col s1">
+                          <span class="card-title name-day">Mon</span>
+                          <p class="day"></p>
+                        </div>
+                        <div class="col s1">
+                          <span class="card-title name-day">Tue</span>
+                          <p class="day"></p>
+                        </div>
+
+
+                    <!-- <div class="col s1 day"></div>
                     <div class="col s1 day"></div>
                     <div class="col s1 day"></div>
                     <div class="col s1 day"></div>
-                    <div class="col s1 day"></div>
-                    <div class="col s1 day"></div>
+                    <div class="col s1 day"></div> -->
                     </div>
                 </div>
                 <div class="output-field col s6">
@@ -83,16 +122,39 @@
           <button class="waves-effect  waves-light btn-large"><i class="material-icons right">cloud</i>go</button>
 
         </main>
-        <!-- <div class="card-action">
-          <a href="#">Compare with another city</a>
-        </div> -->
+        <!-- GRAPHS -->
+           <div class="row graph-area center-align">
+            <div class="col s4 section">  
+              <h5 class='main'>
+                <button class="waves-effect waves-teal btn-flat">Temperature</button>
+              </h5>
+              <canvas class='content' id="temperature"></canvas>
+              </div>
+              <div class="col s4 section">  
+                <h5 class='main'>
+                  <button class="waves-effect waves-teal btn-flat">Precipitation</button>
+                </h5>
+                <canvas class='content' id="precipitation"></canvas>
+                </div> 
+                <div class="col s4 section">  
+                  <h5 class='main'>
+                    <button class="waves-effect waves-teal btn-flat">Wind</button>
+                  </h5>
+                  <canvas class='content' id="Wind"></canvas>
+                  </div>
+                 
+           </div>
+        <!-- close card -->
       </div>
     </div>
+    <!-- close app -->
   </div>
    
   <!-- <script type="module" src="config.js"></script> -->
   <!-- <script src="config.js"></script> -->
     <script src="app.js" async defer></script>
+    <script src="graph.js" async defer></script>
+
 
   </body>
 </html>

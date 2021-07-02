@@ -1,3 +1,6 @@
+// trigger drop down
+$(".dropdown-trigger").dropdown();
+
 // WEATHER
 const btn = document.querySelector('button');
 const placeCity = document.querySelector('.helper-text');
@@ -15,6 +18,38 @@ const greetings = document.querySelector('#greetings');
 let timeObject = new Date();
 let getHourz = timeObject.getHours();
 let getMinutez = timeObject.getMinutes();
+let getDay = timeObject.getUTCDay();
+// console.log(getDay); //0 for Sunday, 1 for Monday, 2 for Tuesday, and so on.
+
+// Determine days
+switch(getDay) {
+  case 0:
+    getDay = 'Sunday';
+    break;
+  case 1:
+    getDay = 'Monday';
+    break;
+  case 2:
+    getDay = 'Tuesday';
+    break;
+  case 3:
+    getDay = 'Wednesday';
+    break;
+  case 4:
+    getDay = 'Thursday';
+    break;
+  case 5:
+    getDay = 'Friday';
+    break;  
+  case 5:
+    getDay = 'Saturday';
+      break; 
+  default:
+    getDay = 'Coffee Time';
+}
+
+// console.log(getDay);
+
 let greet = '';
 
 getHourz < 10 ? getHourz = '0' + getHourz: getHourz;
@@ -26,14 +61,12 @@ getHourz < 18 ? greet = 'Good afternoon': greet = 'Good evening';               
 // console.log(typeof(getMinutez));
 greetings.innerHTML = greet;
 
-time.innerHTML = `${getHourz}:${getMinutez}`;
+time.innerHTML = `<span class='show-day'>${getDay}</span> ${getHourz}:${getMinutez}`;
 
 // FORECAST 
-const day = document.querySelectorAll('.day');
-console.log(day);
-console.log('day ,', typeof(day)); //object but looks like array // array-like object
-
-
+const days = document.querySelectorAll('.day');
+// console.log(days);
+// console.log('days ,', typeof(days)); //object but looks like array // array-like object
 
 // API
 let api = 'https://api.openweathermap.org/data/2.5';
@@ -74,8 +107,8 @@ placeCity.innerHTML = `${myJson.name}, ${myJson.sys.country}`;
 // console.log(myJson.list[0].main.temp);
 temp.innerHTML = `${Math.round(myJson.main.temp)}&deg;`;
 // temp.innerHTML = `${myJson.main.temp} &#8451;`;
-high.innerHTML = `Today's high ${myJson.main.temp_max}&deg;`;
-low.innerHTML = `Today's low ${myJson.main.temp_min}&deg;`;
+high.innerHTML = `Today's high ${Math.round(myJson.main.temp_max)}&deg;`;
+low.innerHTML = `Today's low ${Math.round(myJson.main.temp_min)}&deg;`;
 
 // rain.innerHTML = `Chances of rain in ${myJson.rain} `;
 // for (const [key, value] of Object.entries(myJson.rain)) {
@@ -88,9 +121,8 @@ description.innerHTML = `There's ${myJson.weather[0].description}`;
 // remove typed city from input
   cityElement.value = '';
 
-  // TODO: 5 Days Weather Forecast
+  //5 Days Weather Forecast
  // use: api.openweathermap.org/data/2.5/forecast?q={city name}&appid={API key}
-//  TODO: Prepare display area
 
 // Fetch another API
 return fetch(url_forecast);
@@ -105,25 +137,37 @@ return fetch(url_forecast);
     // console.log(data);
     // console.log(data.list);
     // Loop through array of objects for 5 days- index 0 to 4
-let forecast = [];
+let weatherForecast = [];
     for (let i = 0; i < 5; i++) {
+      // Access data object
   // console.log(data.list[i]);
+
+  // TODO: Access date 
+  // TODO: Convert date to days dt: 1625205600, dt_txt: "2021-07-02 06:00:00"
+  // console.log(data.list[i].clouds);
+  // TODO: FIX BUG!!! Each day, forecast is done in 3h interval from midnight00 to 9p2100  (8times)
+  // TODO: Iterate depending on time of day AND iterate to get correct day (use filter!)
+  // TODO: First iterate through DATE AND TIME, to get correct temperature
+
+  // Temperature
   // console.log(data.list[i].main);
   // console.log(data.list[i].main.temp);
-  forecast.push(data.list[i].main.temp);
-  // console.log(forecast);
+  weatherForecast.push(data.list[i].main.temp);
+  // console.log(weatherForecast);
 }
 
-console.log(forecast);
+// console.log(weatherForecast);
 
-day.forEach(function(singleDay,i) {
+days.forEach(function(singleDay,i) {
   // console.log(i);
   // console.log(singleDay);
-  // console.log(forecast)
-// grab indexwise from data.list[i].main.temp
-// write in dome
-  // day.innerHTML = `${forecast}&deg;`;
-  singleDay.innerHTML = `${forecast[i]}&deg;`;
+// console.log(forecast)
+ // grab indexwise from data.list[i].main.temp
+ // write in dom
+ // day.innerHTML = `${forecast}&deg;`;
+  singleDay.innerHTML = `${Math.round(weatherForecast[i])}&deg;`;
+
+  // TODO: display day using getDay with first 3 letters eg Mon for monday and so on
 });
 
 
@@ -131,3 +175,20 @@ day.forEach(function(singleDay,i) {
     console.warn(error);
   })
 }); // close addEventListener
+
+
+// ACCORDION
+const mainElements = document.querySelectorAll('.main');
+const contentElements = document.querySelectorAll('.content');
+// test in console to get 2 objects, can make use of it mainElements, contentElements
+
+// Interaction
+for(let i = 0; i < mainElements.length; i++) {
+// console.log(mainElements[i]);
+  mainElements[i].addEventListener('click', function(){
+    // console.log(mainElements[i]);
+    // console.log(mainElements[i].nextElementSibling);
+    // console.log(mainElements[i].nextElementSibling.classList.toggle('active'));
+    mainElements[i].nextElementSibling.classList.toggle('active')
+  })
+}

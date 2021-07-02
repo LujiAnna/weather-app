@@ -21,17 +21,56 @@ h4 {
 font-size: 600%!important;
 }
 
-p {
+.output-field p {
   line-height: 1.85;
+}
+
+.show-day {
+  font-weight: 300!important;
+  font-size: 90%;
+}
+
+.name-day {
+  font-size: 90%!important;
 }
 
 .forecast {
   padding: 20px;
-  background-color: goldenrod!important;
+  /* background-color: goldenrod!important; */
   /* font-size: 150%!important; */
 }
 
 .forecast .col {
   margin-right: 10px;
   padding-right: 25px;
+}
+
+/* dropdown */
+.dropdown-content{
+  width: max-content !important;
+  height:auto !important;
+}
+
+/* GRAPH */
+
+.graph-area h5 button {
+  text-transform: capitalize!important;
+}
+
+/* ACCORDION */
+
+.content {
+  display: none;
+  padding: 20px;
+  border: solid 1px #000;
+  width: 80%;
+  height: 100px;
+}
+
+.main button{
+  color: #61695f!important;
+}
+
+.active {
+  display: block;
 }
